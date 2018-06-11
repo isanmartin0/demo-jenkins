@@ -10,6 +10,7 @@ node('maven') {
     stage('Checkout source code') {
         echo 'Checkout scm'
         checkout scm
+        sleep(60)
     }
 
     stage('Credentials') {
