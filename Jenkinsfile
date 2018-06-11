@@ -1,39 +1,18 @@
-@Library('demo-jenkins-library') _
-
-import com.evobanco.Utils
-
-
-def utils = new com.evobanco.Utils()
-def mavenCmd = 'mvn -U -B -s /opt/evo-maven-settings/evo-maven-settings.xml'
-
-node('maven') {
-
-    stage('Checkout source code') {
-        echo 'Checkout scm new'
-        checkout scm
-        sleep(60)
-    }
-
-    stage('Credentials') {
-        withCredentials([usernamePassword(credentialsId: 'demo-jenkins-credentials', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
-            echo "Username: ${USERNAME}"
-            echo "Password: ${PASSWORD}"
+pipeline {
+    agent any
+    stages {
+        stage('Example') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+            }
         }
-    }
-
-
-    stage ('Detect branch type') {
-        echo 'Detect branch type'
-        def branchName = utils.getBranch()
-        def branch_type = utils.getBranchType(branchName)
-
-        echo "branchName: ${branchName}"
-        echo "branchType: ${branch_type}"
-    }
-
-
-    stage('Compile') {
-        echo 'Maven compile'
-        sh "${mavenCmd} compile"
     }
 }
