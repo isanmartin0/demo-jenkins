@@ -23,6 +23,9 @@ node('maven') {
         echo 'Detect branch type'
         def branchName = utils.getBranch()
         def branch_type = utils.getBranchType(branchName)
+
+        echo "branchName: ${branchName}"
+        echo "branchType: ${branch_type}"
     }
 
 
