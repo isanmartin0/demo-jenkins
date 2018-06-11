@@ -1,17 +1,23 @@
 pipeline {
-    agent any
+    agent 'maven'
     stages {
         stage('Example') {
             steps {
-                input {
-                    message "Should we continue?"
-                    ok "Yes, we should."
-                    submitter "alice,bob"
-                    parameters {
-                        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                    }
+                script {
+                // This step pauses Pipeline execution and allows the user to interact and control the flow of the build.
+                // Only a basic "process" or "abort" option is provided in the stage view
+                input message: '', ok: 'Proceed',
+                        parameters: [
+                                string(name: '', description: ''),
+                        ]
                 }
-                echo "Hello, ${PERSON}, nice to meet you."
+            }
+        }
+
+        stage('Maven version') {
+            steps {
+                echo "Hello, Maven"
+                sh "mvn --version" // Runs a Bourne shell script, typically on a Unix node
             }
         }
     }
