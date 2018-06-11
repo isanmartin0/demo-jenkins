@@ -1,6 +1,6 @@
 //import com.evobanco.Utils
 
-@Library('msa-cicd-jenkins-shared-libs') _
+@Library('demo-jenkins-library') _
 
 def utils = new com.evobanco.Utils()
 def mavenCmd = 'mvn -U -B -s /opt/evo-maven-settings/evo-maven-settings.xml'
