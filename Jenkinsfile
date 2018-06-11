@@ -1,11 +1,12 @@
 pipeline {
-    agent {
-        node {
-            label 'maven'
-        }
-    }
+    agent none
     stages {
-        stage('Example') {
+        stage('Waiting 1') {
+            agent {
+                node {
+                    label 'maven'
+                }
+            }
             steps {
                 script {
                 // This step pauses Pipeline execution and allows the user to interact and control the flow of the build.
@@ -19,19 +20,23 @@ pipeline {
         }
 
         stage('Maven version') {
+            agent {
+                node {
+                    label 'maven'
+                }
+            }
             steps {
                 echo "Hello, Maven"
                 sh "mvn --version" // Runs a Bourne shell script, typically on a Unix node
             }
         }
-    }
-    agent {
-        node {
-            label 'nodejs'
-        }
-    }
-    stages {
-        stage('Example') {
+
+        stage('Waiting 2') {
+            agent {
+                node {
+                    label 'nodejs'
+                }
+            }
             steps {
                 script {
                 // This step pauses Pipeline execution and allows the user to interact and control the flow of the build.
@@ -45,6 +50,11 @@ pipeline {
         }
 
         stage('NodeJS version') {
+            agent {
+                node {
+                    label 'nodejs'
+                }
+            }
             steps {
                 echo "Hello, NodeJS"
                 sh "node --version" // Runs a Bourne shell script, typically on a Unix node
