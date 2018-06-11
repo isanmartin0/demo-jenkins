@@ -19,6 +19,6 @@ node('maven') {
 
     stage('Compile') {
         echo 'Maven compile'
-        ah 'mvn compile'
+        sh 'mvn compile'
     }
 }
