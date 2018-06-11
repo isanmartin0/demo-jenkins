@@ -1,6 +1,8 @@
 //import com.evobanco.Utils
 
-//def utils = new com.evobanco.Utils()
+@Library('msa-cicd-jenkins-shared-libs') _
+
+def utils = new com.evobanco.Utils()
 def mavenCmd = 'mvn -U -B -s /opt/evo-maven-settings/evo-maven-settings.xml'
 
 node('maven') {
@@ -16,13 +18,13 @@ node('maven') {
             echo "Password: ${PASSWORD}"
         }
     }
-/*
+
     stage ('Detect branch type') {
         echo 'Detect branch type'
         def branchName = utils.getBranch()
         def branch_type = getBranchType(branchName)
     }
-*/
+
 
     stage('Compile') {
         echo 'Maven compile'
