@@ -10,6 +10,12 @@ node('maven') {
         checkout scm
     }
 
+    stage('Credentials') {
+        withCredentials([usernamePassword(credentialsId: 'demo-jenkins-credentials', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME')]) {
+            echo "Username: ${USERNAME}"
+            echo "Password: ${PASSWORD}"
+        }
+    }
 /*
     stage ('Detect branch type') {
         echo 'Detect branch type'
