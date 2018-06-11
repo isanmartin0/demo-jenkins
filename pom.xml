@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ev</groupId>
-	<artifactId>demo-pru-srv</artifactId>
+	<artifactId>demo-jenkins</artifactId>
 	<version>0.0.1-RELEASE</version>
 	<packaging>war</packaging>
 
