@@ -1,6 +1,7 @@
 //import com.evobanco.Utils
 
 //def utils = new com.evobanco.Utils()
+def mavenCmd = 'mvn -U -B -s /opt/evo-maven-settings/evo-maven-settings.xml'
 
 node('maven') {
 
@@ -19,6 +20,6 @@ node('maven') {
 
     stage('Compile') {
         echo 'Maven compile'
-        sh 'mvn compile'
+        sh '${mavenCmd}compile'
     }
 }
