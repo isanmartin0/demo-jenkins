@@ -9,7 +9,7 @@ def mavenCmd = 'mvn -U -B -s /opt/evo-maven-settings/evo-maven-settings.xml'
 node('maven') {
 
     stage('Checkout source code') {
-        echo 'Checkout scm modified'
+        echo 'Checkout scm new'
         checkout scm
         sleep(60)
     }
