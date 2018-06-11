@@ -22,7 +22,7 @@ node('maven') {
     stage ('Detect branch type') {
         echo 'Detect branch type'
         def branchName = utils.getBranch()
-        def branch_type = getBranchType(branchName)
+        def branch_type = utils.getBranchType(branchName)
     }
 
 
