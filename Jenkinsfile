@@ -1,8 +1,10 @@
+
+//@Library('demo-jenkins-library') _
+
 //import com.evobanco.Utils
 
-@Library('demo-jenkins-library') _
 
-def utils = new com.evobanco.Utils()
+//def utils = new com.evobanco.Utils()
 def mavenCmd = 'mvn -U -B -s /opt/evo-maven-settings/evo-maven-settings.xml'
 
 node('maven') {
@@ -20,6 +22,7 @@ node('maven') {
         }
     }
 
+/*
     stage ('Detect branch type') {
         echo 'Detect branch type'
         def branchName = utils.getBranch()
@@ -28,7 +31,7 @@ node('maven') {
         echo "branchName: ${branchName}"
         echo "branchType: ${branch_type}"
     }
-
+*/
 
     stage('Compile') {
         echo 'Maven compile'
