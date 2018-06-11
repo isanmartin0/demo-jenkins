@@ -1,5 +1,10 @@
 pipeline {
-    agent 'maven'
+    agent {
+        node {
+            label 'my-defined-label'
+            customWorkspace '/some/other/path'
+        }
+    }
     stages {
         stage('Example') {
             steps {
