@@ -18,16 +18,28 @@ pipeline {
                 }
             }
         }
-
-        stage('Maven version') {
-            agent {
-                node {
-                    label 'maven'
+        parallel {
+            stage('Maven version') {
+                agent {
+                    node {
+                        label 'maven'
+                    }
+                }
+                steps {
+                    echo "Hello, Maven"
+                    sh "mvn --version" // Runs a Bourne shell script, typically on a Unix node
                 }
             }
-            steps {
-                echo "Hello, Maven"
-                sh "mvn --version" // Runs a Bourne shell script, typically on a Unix node
+            stage('Maven version 2') {
+                agent {
+                    node {
+                        label 'maven'
+                    }
+                }
+                steps {
+                    echo "Hello again, Maven"
+                    sh "mvn --version" // Runs a Bourne shell script, typically on a Unix node
+                }
             }
         }
 
